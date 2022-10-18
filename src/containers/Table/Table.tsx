@@ -1,40 +1,47 @@
 
-import { tab } from '@testing-library/user-event/dist/tab';
-import { Space, Table, Tag , Button, Modal } from 'antd';
+import { Table, Tag  } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import React from 'react';
-import { CustomTable , CustomModal , CustomModal2} from './tablestyle';
-import { DataType, Tabledata } from '../Data';
-import { useState , useEffect, useCallback , useContext}  from 'react';
+import { CustomTable } from './tablestyle';
+import { DataType, Tabledata } from '../../Data';
+import { useState}  from 'react';
+import { Modal1 } from '../../components/Modal1/index';
+import { Modal2 } from '../../components/Modal2';
+
+
 
 
 
 const Usertable:React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-const [isModalOpen, setIsModalOpen] = useState(false);
 const [issubModalOpen, setIssubModalOpen] = useState(false);
 const [dataa, setdataa] = useState<any>(Tabledata)
 
 const showModal = () => {
   setIsModalOpen(true);
 };
+const handleOk = () => {
+  setIsModalOpen(false);
+};
+
+const handleCancel = () => {
+  setIsModalOpen(false);
+};
+
 const showsubModal = () => {
   setIssubModalOpen(true);
 };
 
 
 
-const handleOk = () => {
-  setIsModalOpen(false);
-};
+
 const handlesubOk = () => {
   setIssubModalOpen(false);
 };
 
 
-const handleCancel = () => {
-  setIsModalOpen(false);
-};
+
 const handlesubCancel = () => {
   setIssubModalOpen(false);
 };
@@ -58,7 +65,7 @@ console.log(dataa);
           <>  
           {  
           record.status == "completed" ? 
-          (<Tag className='ordersize'>
+          (<Tag className='ordersize' >
             {ordersize}
           </Tag> ) : 
           (
@@ -120,34 +127,21 @@ console.log(dataa);
       
     
       return(
-
+    
        
 
 
         <CustomTable>
-        <CustomModal2  open={issubModalOpen} onOk={handlesubOk} onCancel={handlesubCancel} footer={null}  >
-        <div className='contentt'>
-        <h2>Return to main screen</h2>
-        <p>This order is in progress by another associate.</p>
-        <div className='btn'>
-        <Button type='primary' className='btn2'  onClick ={ () => handlesubCancel()}> Return </Button>
-        </div>
-        </div>
-        </CustomModal2>
-       
-      <CustomModal  open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}  > 
-        <div className='contentt'>
-        <h2>Do you want to resume?</h2>
-        <p>This order was initiated by another associate.</p>
-        <div className='btn'>
-        <Button type='default' onClick={() => {  handleCancel(); showsubModal();  } } className='btn1'> Resume this order </Button>
-        <Button type='primary' className='btn2'  onClick ={handleCancel}> Close </Button>
-        </div>
-        </div>
-      </CustomModal>
+      
+       <div className='wrapper'>
+      <Modal1 isModalOpen={isModalOpen} handleOk={()=>setIsModalOpen(false)} handleCancel={()=>setIsModalOpen(false)} showsubModal={()=>setIssubModalOpen(true)} />
+      <Modal2 issubModalOpen={issubModalOpen} handlesubOk={()=>setIssubModalOpen(false)} handlesubCancel={()=>setIssubModalOpen(false)} />
+
+
           <Table columns={columns} dataSource={dataa} />
-        
+          </div> 
         </CustomTable>
+        
         
       )
 }

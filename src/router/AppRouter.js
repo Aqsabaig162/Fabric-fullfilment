@@ -5,7 +5,8 @@ import {
     Route,
     useNavigate,
   } from "react-router-dom";
-import  Table   from '../containers/Table';
+import { Begin } from '../containers/steps/Begin';
+import  Table   from '../containers/Table/Table';
 import Layoutfabric from '../template/FabricLayout';
 
 
@@ -15,6 +16,10 @@ import Layoutfabric from '../template/FabricLayout';
       component: <Table /> ,
       path: "/",
     },
+    {
+      component: <Begin/>,
+      path: '/steps'
+    }
    
   ];
 

@@ -1,22 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Layoutfabric from './template/FabricLayout';
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './router/AppRouter';
-import TableData from './containers/Table';
-import Usertable from './containers/Table';
-import SideBar from './containers/Sidebar';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-   
-   
   <AppRouter />
-    
   </React.StrictMode>
 );
 
