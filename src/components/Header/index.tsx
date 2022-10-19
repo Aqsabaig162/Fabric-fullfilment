@@ -4,6 +4,7 @@ import { BellOutlined } from "@ant-design/icons";
 
 interface Props {
   title?: string;
+  
 }
 
 const Header = (props: Props) => {

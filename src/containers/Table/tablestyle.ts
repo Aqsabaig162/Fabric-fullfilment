@@ -3,7 +3,11 @@ import styled from "styled-components";
 
 export const CustomTable = styled.div
 `
-
+.wrapper {
+    padding: 20px;
+    background: white;
+    border-radius: 25px;
+}
 
 .ant-tag {
     box-sizing: border-box;

@@ -1,8 +1,12 @@
 import { Button, message, Steps } from 'antd';
 import React, { useState } from 'react';
-
+import { GrayBtn } from '../../components/GreyButton';
+import { LayoutTop } from '../../components/LayoutTop';
+import { ProductDetails } from '../../components/ProductDetails';
+import { ThreeSteps } from '../../components/ThreeSteps';
 import { CustomCard, Customsteps } from './begin.style';
-import {Separateline, Threedots} from './beginsvgs';
+import {Chips, RightTopBtn, Separateline, Threedots, TopLeftBtn} from './beginsvgs';
+
 
 
 const { Step } = Steps;
@@ -37,14 +41,17 @@ export const Begin = (props: Props) => {
 
     return (
       <>
+      
       <Customsteps>
+      <LayoutTop   
+        title= {"PXGAI08942"}
+       leftbutton = { <TopLeftBtn /> }
+       rightbuttonsteps = { <RightTopBtn />  }
+        />
+
+      <div className='wrapper'> 
       <div className='stepsdiv'>
-        <Steps current={current}  responsive = {true} >
-          
-        {steps.map(item => (
-          <Step key={item.title}   title={item.title} />
-        ))}
-      </Steps>
+       <ThreeSteps />
       <span className='line' > <Separateline /> </span>
       <div className='card'>
       <CustomCard style={{ width: 300 }}>
@@ -52,16 +59,34 @@ export const Begin = (props: Props) => {
         <h2>Items</h2>
         <Button type='primary' className='btn1' > <Threedots /> </Button>
         </div>
+       <div className='products'>
+       <p> <ProductDetails p1= {'SKU: 1965322809631234'}
+       p2 = {'Color: Navy Blue'}
+       p3 = {' Size: 48 '}
+       chips = { <Chips /> }
+       /> </p>
+      <p><ProductDetails p1= {'SKU: 1965322809631234'}
+       p2 = {'Color: Navy Blue'}
+       p3 = {' Size: 48 '}
+       chips = { <Chips />}
+       />
+       </p>
+        <p>
+        <ProductDetails p1= {'SKU: 1965322809631234'}
+       p2 = {'Color: Navy Blue'}
+       p3 = {' Size: 48 '}
+       chips = { <Chips />}
+       />
+        </p>
+       </div>
        
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
         </CustomCard>
-  
+       </div>
+       </div>
       </div>
-     
-      </div>
+      <GrayBtn />
       </Customsteps>
+      
     </>
 
     )

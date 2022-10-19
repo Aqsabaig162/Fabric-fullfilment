@@ -5,12 +5,15 @@ import { Button } from 'antd';
 import { useNavigate } from 'react-router';
 import { CustomSider } from './sidebar.style';
 import { ArrowUp, Phone, Mail, Line , Location } from './rightsidersvgs';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { setshowsidebar } from '../../features/showsidebarslice';
 
 
 export interface SideBarProps {
 }
 
 export const Productdetails = (props: any) => {
+  const { showsidebar } = useAppSelector((state) => state);
   return(
     <span className='prodspan'>
     <p className='imgsmall '> <img src=  {smallrectangle}    /> </p>
@@ -32,7 +35,8 @@ export const Productdetails = (props: any) => {
 
 
  export const SideBar2 =  (props: any) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const Begin = () => {
 
     navigate('/steps')
@@ -77,7 +81,7 @@ export const Productdetails = (props: any) => {
         <Line />
          <Productdetails />
          <Line />
-        <Button type='primary'  className="beginbtn" onClick={ ()=> Begin()} > Begin </Button>
+        <Button type='primary'  className="beginbtn" onClick={ ()=>  { Begin(); dispatch(setshowsidebar(false)) }} > Begin </Button>
       </CustomSider>
     </div>
   );

@@ -16,7 +16,7 @@ export const Modal1 = (props: Props) => {
       onOk={handleOk}
       onCancel={handleCancel}
       footer={null}
-    >
+      >
       <div className="contentt">
         <h2>Do you want to resume?</h2>
         <p>This order was initiated by another associate.</p>
@@ -29,12 +29,11 @@ export const Modal1 = (props: Props) => {
             }}
             className="btn1"
           >
-            {" "}
-            Resume this order{" "}
+            Resume this order
           </Button>
           <Button type="primary" className="btn2" onClick={handleCancel}>
-            {" "}
-            Close{" "}
+       
+            Close
           </Button>
         </div>
       </div>

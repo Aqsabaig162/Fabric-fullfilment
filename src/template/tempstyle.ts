@@ -43,16 +43,5 @@ h1{
     border-radius: 24px;
 }
 
-.top{
-    display: flex;
-    justify-content: space-between;
-}
-
-.orderbtn{
-    background: #6C5DD3;
-    border: 2px solid #6C5DD3;
-    border-radius: 16px;
-    height: 36px;
-}
 
 `

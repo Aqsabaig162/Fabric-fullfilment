@@ -1,5 +1,5 @@
 
-import { Table, Tag  } from 'antd';
+import { Button, Table, Tag  } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import React from 'react';
 import { CustomTable } from './tablestyle';
@@ -7,14 +7,18 @@ import { DataType, Tabledata } from '../../Data';
 import { useState}  from 'react';
 import { Modal1 } from '../../components/Modal1/index';
 import { Modal2 } from '../../components/Modal2';
-
+import { LayoutTop } from '../../components/LayoutTop';
+import { GrayBtn } from '../../components/GreyButton';
+import { DownArrow } from '../../components/SiderRight/rightsidersvgs';
+import { setshowsidebar } from '../../features/showsidebarslice';
+import { useAppDispatch } from '../../store/hooks';
 
 
 
 
 const Usertable:React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+ const dispatch = useAppDispatch()
 const [issubModalOpen, setIssubModalOpen] = useState(false);
 const [dataa, setdataa] = useState<any>(Tabledata)
 
@@ -66,7 +70,7 @@ console.log(dataa);
           {  
           record.status == "completed" ? 
           (<Tag className='ordersize' >
-            {ordersize}
+          <span onClick={ () => dispatch(setshowsidebar(true)) } > {ordersize} </span> 
           </Tag> ) : 
           (
           <Tag className='orderpending'  >
@@ -132,7 +136,14 @@ console.log(dataa);
 
 
         <CustomTable>
-      
+       
+       <LayoutTop   
+        title= {"Fulfillments"}
+        buttontext = { "Orders" }
+        rightbuttontable = { <DownArrow /> }
+        />
+
+
        <div className='wrapper'>
       <Modal1 isModalOpen={isModalOpen} handleOk={()=>setIsModalOpen(false)} handleCancel={()=>setIsModalOpen(false)} showsubModal={()=>setIssubModalOpen(true)} />
       <Modal2 issubModalOpen={issubModalOpen} handlesubOk={()=>setIssubModalOpen(false)} handlesubCancel={()=>setIssubModalOpen(false)} />
@@ -140,6 +151,7 @@ console.log(dataa);
 
           <Table columns={columns} dataSource={dataa} />
           </div> 
+     
         </CustomTable>
         
         
