@@ -1,76 +1,72 @@
 import styled from "styled-components";
-import {  Layout } from 'antd';
+import { Layout } from "antd";
 
-const {  Sider } = Layout;
+const { Sider } = Layout;
 
-export const CustomSider = styled(Sider)
-`
-
-transition: transform 0.2s ; 
-
-height: 100% !important;
-.beginbtn {
-    background: #6C5DD3;
-    border: 2px solid #6C5DD3;
+export const CustomSider = styled(Sider)`
+  transition: transform 0.2s;
+  height: 100% !important;
+  .beginbtn {
+    background: #6c5dd3;
+    border: 2px solid #6c5dd3;
     border-radius: 16px;
     width: 235px;
     height: 42px;
-}
-padding: 15px;
-h1{
+  }
+  padding: 15px;
+  h1 {
     font-weight: 700;
     font-size: large;
-}
+  }
 
-h3{
+  h3 {
     font-weight: 700;
-}
-.sidetop{
+  }
+  .sidetop {
     padding-top: 15%;
-}
+  }
 
-.secondside >p {
-    color: #B8B7B7;
+  .secondside > p {
+    color: #b8b7b7;
     font-weight: 700;
-}
-.prodspan{
+  }
+  .prodspan {
     display: flex;
-}
+    justify-content: space-around;
+  }
 
-.Pdata{
+  .Pdata {
     display: flex;
     gap: 47px;
+    padding-right: 30px;
+  }
+  .beginbtn {
+  }
 
-}
-.beginbtn{
-
-}
-
-.Pdata >p {
+  .Pdata > p {
     font-weight: 600;
     color: #808191;
-}
+  }
 
-.lists {
+  .lists {
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-.ulli{
+  }
+  .ulli {
     list-style: none;
     padding-left: 0px;
-}
-.ulli2{
+  }
+  .ulli2 {
     list-style: none;
     padding-right: 0px;
     font-weight: 500;
-}
-.imgsmall{
+  }
+  .imgsmall {
     padding-top: 5px;
-    
-}
-.bigrect{
+  }
+  .bigrect {
     width: 230px;
-}
-`
+  }
+`;

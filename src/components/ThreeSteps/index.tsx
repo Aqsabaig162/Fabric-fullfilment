@@ -44,7 +44,7 @@ export const ThreeSteps = (props: Props) => {
             
           ))
           }
-          <StepsLine/>
+          {/* <StepsLine/> */}
         </Steps>
         </CustomThreeSteps>
         

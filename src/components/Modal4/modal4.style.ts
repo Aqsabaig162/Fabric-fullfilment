@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Modal } from "antd";
-
-export const CustomModal1 = styled(Modal)`
+export const CustomModal4 = styled(Modal)`
   .ant-modal-content {
     overflow: auto;
     border-radius: 24px;
@@ -11,13 +10,38 @@ export const CustomModal1 = styled(Modal)`
     justify-content: center;
   }
   .contentt {
-    padding-left: 20px;
-    padding-top: 25px;
+  }
+  .counter {
+    width: 280px;
+    height: 35px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding-bottom: 20px;
+  }
+  .Modal4style {
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
+  }
+  .counter {
+    Button {
+      background: #ffffff;
+      border-radius: 8px;
+      color: black;
+      font-weight: bolder;
+      border: white;
+    }
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
   }
 
   .contentt > p {
     display: flex;
     justify-content: center;
+    width: max-content;
   }
 
   h2 {

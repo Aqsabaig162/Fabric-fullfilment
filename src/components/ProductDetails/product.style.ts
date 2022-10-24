@@ -1,43 +1,42 @@
 import styled from "styled-components";
 
-export const Productstyle = styled.div
-`
-.stepsproduct
-{
-    background: #FFFFFF;
+export const Productstyle = styled.div`
+  .stepsproduct {
+    background: #ffffff;
     border-radius: 16px;
-    padding: 2%;
 
-    h4{
-        font-weight: 750;
+    h4 {
+      font-weight: 750;
     }
-}
+  }
 
-.stepprod1{
+  //   .notModal {
+  //     padding: 2%;
+  //   }
+
+  .stepprod1 {
     display: flex;
-    line-height: 8px; 
+    line-height: 8px;
     div:nth-child(3) {
-        display: flex;
-        align-items: end;
-        margin-left: auto;
-        gap: 4px;
-      }
-     
-}
+      display: flex;
+      align-items: end;
+      margin-left: auto;
+      gap: 4px;
+    }
+  }
 
-.prodlist{
+  .prodlist {
     font-size: 12px;
     color: #808191;
     padding-left: 8px;
     font-weight: 700;
-}
+  }
 
-.vassetting{
+  .vassetting {
     background: #fafafa;
     border: 2px solid #000000;
     border-radius: 8px;
-}
-.btn2{
-
-}
-`
+  }
+  .btn2 {
+  }
+`;

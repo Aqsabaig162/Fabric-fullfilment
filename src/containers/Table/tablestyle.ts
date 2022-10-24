@@ -1,12 +1,33 @@
 import styled from "styled-components";
 
-
-export const CustomTable = styled.div
-`
+export const CustomTable = styled.div`
+.orderbtn {
+    background: #6c5dd3;
+    border: 2px solid #6c5dd3;
+    border-radius: 16px;
+    height: 36px;
+    h4{
+        color: white;
+    }
+  }
 .wrapper {
     padding: 20px;
     background: white;
     border-radius: 25px;
+}
+.filterdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filterbtn{
+    width: 56px;
+    height: 56px;
+    background: #F9F9F9;
+    border-radius: 12px;
+    border:  #F9F9F9;
+
 }
 
 .ant-tag {
@@ -41,6 +62,7 @@ export const CustomTable = styled.div
 .ordersize{
     color: white;
     background: black;
+    cursor: pointer;
 }
 .ant-table-thead{
     background: white ;
@@ -84,6 +106,4 @@ a {
     font-weight: 600;
 }
 
-`
-
-
+`;
