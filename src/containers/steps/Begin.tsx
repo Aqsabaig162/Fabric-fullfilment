@@ -1,11 +1,10 @@
 import { Button, message, Steps } from "antd";
 import React, { useState } from "react";
-import { GrayBtn } from "../../components/GreyButton";
+import { GrayBtn } from "../../components/FullWidthButton";
 import { LayoutTop } from "../../components/LayoutTop";
 import { ProductDetails } from "../../components/ProductDetails";
 import { ThreeSteps } from "../../components/ThreeSteps";
 import { CustomCard, Customsteps } from "./begin.style";
-import { Modal3 } from "../../components/Modal3";
 
 import {
   Chips,
@@ -15,8 +14,7 @@ import {
   TopLeftBtn,
   TopThreeDots,
 } from "./beginsvgs";
-import { CustomModal4 } from "../../components/Modal4/modal4.style";
-import { Modal4 } from "../../components/Modal4";
+import { Modal } from "../../components/Modal";
 
 const { Step } = Steps;
 const steps = [
@@ -38,8 +36,17 @@ interface Props {}
 
 export const Begin = (props: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [issubModalOpen, setIssubModalOpen] = useState(false);
+  const [isSubModalOpen, setIsSubModalOpen] = useState(false);
   const [current, setCurrent] = useState(0);
+  const [Counter, setCounter] = useState(0);
+
+  const Sum = () => {
+    return setCounter(Counter + 1);
+  };
+
+  const Subtract: any = () => {
+    return setCounter(Counter - 1);
+  };
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -53,15 +60,15 @@ export const Begin = (props: Props) => {
   };
 
   const showsubModal = () => {
-    setIssubModalOpen(true);
+    setIsSubModalOpen(true);
   };
 
   const handlesubOk = () => {
-    setIssubModalOpen(false);
+    setIsSubModalOpen(false);
   };
 
   const handlesubCancel = () => {
-    setIssubModalOpen(false);
+    setIsSubModalOpen(false);
   };
 
   const next = () => {
@@ -74,25 +81,89 @@ export const Begin = (props: Props) => {
 
   return (
     <>
-      <Modal3
+      <Modal
         isModalOpen={isModalOpen}
         handleOk={() => setIsModalOpen(false)}
         handleCancel={() => setIsModalOpen(false)}
-        showsubModal={() => setIssubModalOpen(true)}
-      />
-      <Modal4
-        issubModalOpen={issubModalOpen}
-        handlesubOk={() => setIssubModalOpen(false)}
-        handlesubCancel={() => setIssubModalOpen(false)}
-      />
+        width={400}
+      >
+        <h2>Item Options</h2>
+        <p>
+          <ul className="unlist">
+            <div
+              className="selected"
+              onClick={() => {
+                handleCancel();
+                showsubModal();
+              }}
+            >
+              <li>Manually pick</li>
+            </div>
+            <div className="notselected">
+              <li>Product info</li>
+            </div>
+            <div className="notselected">
+              <li>Scratch item</li>
+            </div>
+            <div className="notselected  scndlast ">
+              <li>Update weight</li>
+            </div>
+            <div className="notselected   last">
+              <li>Unpick item</li>
+            </div>
+          </ul>
+        </p>
+        <div className="btnitems">
+          <Button type="primary" className="btn2" onClick={handleCancel}>
+            Done
+          </Button>
+        </div>
+      </Modal>
+      <Modal
+        isModalOpen={isSubModalOpen}
+        handleOk={() => setIsSubModalOpen(false)}
+        handleCancel={() => setIsSubModalOpen(false)}
+        width={400}
+      >
+        <h2>Manual Pick</h2>
+        <div className="Modal4style">
+          <p>
+            <ProductDetails
+              p1={"SKU: 1965322809631234"}
+              p2={"Color: Navy Blue"}
+              p3={" Size: 48 "}
+              chips={<Chips />}
+              inModal={true}
+            />
+          </p>
+          <div className="counter">
+            <div>
+              <Button onClick={() => Subtract()} disabled={Counter <= 0}>
+                -
+              </Button>
+            </div>
+            <div>{Counter} </div>
+            <div>
+              <Button onClick={() => Sum()} disabled={Counter >= 3}>
+                +
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <div className="btnmanualpick">
+          <Button type="primary" className="btn2 " onClick={handlesubCancel}>
+            Done
+          </Button>
+        </div>
+      </Modal>
       <Customsteps>
         <LayoutTop
           title={"PXGAI08942"}
           leftbutton={<TopLeftBtn />}
           rightbuttonsteps={
             <Button type="primary" className="topthreedots">
-              {" "}
-              <TopThreeDots />{" "}
+              <TopThreeDots />
             </Button>
           }
         />

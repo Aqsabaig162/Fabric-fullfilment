@@ -10,9 +10,9 @@ export const Productstyle = styled.div`
     }
   }
 
-  //   .notModal {
-  //     padding: 2%;
-  //   }
+  .notModal {
+    padding: 2%;
+  }
 
   .stepprod1 {
     display: flex;

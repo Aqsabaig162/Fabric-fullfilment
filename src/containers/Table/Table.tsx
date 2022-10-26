@@ -4,19 +4,18 @@ import React from "react";
 import { CustomTable } from "./tablestyle";
 import { DataType, Tabledata } from "../../Data";
 import { useState } from "react";
-import { Modal1 } from "../../components/Modal1/index";
-import { Modal2 } from "../../components/Modal2";
+import { Modal } from "../../components/Modal/index";
 import { LayoutTop } from "../../components/LayoutTop";
-import { GrayBtn } from "../../components/GreyButton";
+import { GrayBtn } from "../../components/FullWidthButton";
 import { DownArrow } from "../../components/SiderRight/rightsidersvgs";
-import { setshowsidebar } from "../../features/showsidebarslice";
-import { useAppDispatch } from "../../store/hooks";
+import { setshowsidebar } from "../../Redux/features/showsidebar/showsidebarslice";
+import { useAppDispatch } from "../../Redux/store/hooks";
 import { Filtersvg } from "./tablesvgs";
 
 const Usertable: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const [issubModalOpen, setIssubModalOpen] = useState(false);
+  const [isSubModalOpen, setIsSubModalOpen] = useState(false);
   const [dataa, setdataa] = useState<any>(Tabledata);
 
   const showModal = () => {
@@ -31,15 +30,15 @@ const Usertable: React.FC = () => {
   };
 
   const showsubModal = () => {
-    setIssubModalOpen(true);
+    setIsSubModalOpen(true);
   };
 
   const handlesubOk = () => {
-    setIssubModalOpen(false);
+    setIsSubModalOpen(false);
   };
 
   const handlesubCancel = () => {
-    setIssubModalOpen(false);
+    setIsSubModalOpen(false);
   };
 
   console.log(dataa);
@@ -60,8 +59,7 @@ const Usertable: React.FC = () => {
           {record.status == "completed" ? (
             <Tag className="ordersize">
               <span onClick={() => dispatch(setshowsidebar(true))}>
-                {" "}
-                {ordersize}{" "}
+                {ordersize}
               </span>
             </Tag>
           ) : (
@@ -71,8 +69,7 @@ const Usertable: React.FC = () => {
                   showModal();
                 }}
               >
-                {" "}
-                {ordersize}{" "}
+                {ordersize}
               </span>
             </Tag>
           )}
@@ -137,17 +134,52 @@ const Usertable: React.FC = () => {
             <Filtersvg />{" "}
           </Button>{" "}
         </div>
-        <Modal1
+        <Modal
           isModalOpen={isModalOpen}
           handleOk={() => setIsModalOpen(false)}
-          handleCancel={() => setIsModalOpen(false)}
-          showsubModal={() => setIssubModalOpen(true)}
-        />
-        <Modal2
-          issubModalOpen={issubModalOpen}
-          handlesubOk={() => setIssubModalOpen(false)}
-          handlesubCancel={() => setIssubModalOpen(false)}
-        />
+          handleCancel={() => {
+            setIsModalOpen(false);
+          }}
+          width={350}
+        >
+          <>
+            <h2>Do you want to resume?</h2>
+            <p>This order was initiated by another associate.</p>
+            <div className="btn">
+              <Button
+                type="default"
+                onClick={() => {
+                  handleCancel();
+                  showsubModal();
+                }}
+                className="btn1"
+              >
+                Resume this order
+              </Button>
+              <Button type="primary" className="btn2" onClick={handleCancel}>
+                Close
+              </Button>
+            </div>
+          </>
+        </Modal>
+
+        <Modal
+          isModalOpen={isSubModalOpen}
+          handleOk={() => setIsSubModalOpen(false)}
+          handleCancel={() => setIsSubModalOpen(false)}
+          width={350}
+        >
+          <>
+            <h2>Return to main screen</h2>
+            <p>This order is in progress by another associate.</p>
+            <div className="btn">
+              <Button type="primary" className="btn2" onClick={handlesubCancel}>
+                {" "}
+                Return{" "}
+              </Button>
+            </div>
+          </>
+        </Modal>
 
         <Table columns={columns} dataSource={dataa} />
       </div>

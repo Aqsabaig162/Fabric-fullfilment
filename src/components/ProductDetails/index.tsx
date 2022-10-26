@@ -6,8 +6,8 @@ interface Props {
   p1?: string;
   p2?: string;
   p3?: string;
-  chips?: any;
-  inModal?: any;
+  chips?: JSX.Element;
+  inModal?: boolean;
 }
 
 export const ProductDetails = (props: Props) => {

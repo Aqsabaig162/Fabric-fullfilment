@@ -1,12 +1,11 @@
 import Bigrectangle from "../../images/BigRectangle.png";
-
 import smallrectangle from "../../images/smallrectangle.png";
 import { Button } from "antd";
 import { useNavigate } from "react-router";
 import { CustomSider } from "./sidebar.style";
 import { ArrowUp, Phone, Mail, Line, Location } from "./rightsidersvgs";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { setshowsidebar } from "../../features/showsidebarslice";
+import { useAppDispatch, useAppSelector } from "../../Redux/store/hooks";
+import { setshowsidebar } from "../../Redux/features/showsidebar/showsidebarslice";
 
 export interface SideBarProps {}
 
@@ -58,18 +57,15 @@ export const SideBar2 = (props: any) => {
             (456) 8929 1231
           </p>
           <p>
-            {" "}
             <a>
               <Mail />
-            </a>{" "}
+            </a>
             jamie.jones@domain.com
           </p>
           <p>
-            {" "}
             <a>
-              {" "}
               <Location />
-            </a>{" "}
+            </a>
             500 7th Avenue, Manhatten, New York, NY, 10018
           </p>
         </div>

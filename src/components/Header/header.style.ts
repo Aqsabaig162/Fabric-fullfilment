@@ -1,45 +1,42 @@
 import styled from "styled-components";
-import { Layout , Input } from 'antd';
+import { Layout, Input } from "antd";
 const { Search } = Input;
-const { Header} = Layout;
+const { Header } = Layout;
 
+export const CustomHeader = styled(Header)`
+  background: #4d4d57;
 
-export const CustomHeader = styled(Header)
-`
-background: #4D4D57;
-
-h2{
+  h2 {
     color: white;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
-}
+    cursor: pointer;
+  }
 
-.buttonslayout{
+  .buttonslayout {
     display: flex;
     align-items: center;
     gap: 10%;
-}
-.ant-input-search-button{
-    border:none;
+  }
+  .ant-input-search-button {
+    border: none;
     color: Light grey;
-}
-.anticon-search{
+  }
+  .anticon-search {
     color: lightgrey;
-}
-.boldbtn{
+  }
+  .boldbtn {
     font-weight: 700;
-}
+  }
 
-Button{
+  Button {
     border-radius: 12px;
-}
+  }
+`;
 
-`
-
-export const CustomSearch = styled(Search)
-`
-width: 70%;
-vertical-align: middle;
-border-radius: 12px;
-`
+export const CustomSearch = styled(Search)`
+  width: 70%;
+  vertical-align: middle;
+  border-radius: 12px;
+`;

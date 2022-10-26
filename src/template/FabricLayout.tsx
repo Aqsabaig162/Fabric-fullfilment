@@ -4,11 +4,20 @@ import { Button, Collapse } from "antd";
 import Header from "../components/Header";
 import Siderleft from "../components/Siderleft";
 import { useState } from "react";
-import { useAppSelector } from "../store/hooks";
-import showsidebarslice, { setshowsidebar } from "../features/showsidebarslice";
+import { useAppSelector } from "../Redux/store/hooks";
+import showsidebarslice, {
+  setshowsidebar,
+} from "../Redux/features/showsidebar/showsidebarslice";
 
 interface Props {
-  children?: any;
+  children?:
+    | React.ReactNode
+    | React.ReactChild
+    | React.ReactChild[]
+    | JSX.Element
+    | JSX.Element[]
+    | string
+    | string[];
 }
 
 const onChange = (key: string | string[]) => {
@@ -23,13 +32,10 @@ const Layoutfabric = (props: Props) => {
     <>
       <CustomLayout>
         <div>
-          {" "}
-          <Header title={"Fulfillment-Fabric"} />{" "}
+          <Header title={"Fulfillment-Fabric"} />
         </div>
         <div>
-          {" "}
           <div className="mid">
-            {" "}
             <Siderleft />
             <CustomContent>{children}</CustomContent>
             {showsidebar ? <SideBar2 /> : ""}

@@ -5,9 +5,9 @@ import { CustomTopLayout } from "./layouttop.style";
 
 interface Props {
   title: string;
-  rightbuttontable?: any;
-  rightbuttonsteps?: any;
-  leftbutton?: any;
+  rightbuttontable?: JSX.Element;
+  rightbuttonsteps?: JSX.Element;
+  leftbutton?: JSX.Element;
 }
 
 export const LayoutTop = (props: Props) => {
