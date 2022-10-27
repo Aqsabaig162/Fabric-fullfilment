@@ -40,7 +40,6 @@ const Siderleft = (props: Props) => {
       <Row className="rowset">
         <Col>
           <div>
-            abdxxxx
             <Menu
               theme="light"
               defaultSelectedKeys={["1"]}
