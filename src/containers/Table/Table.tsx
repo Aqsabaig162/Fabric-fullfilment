@@ -1,4 +1,4 @@
-import { Button, Table, Tag } from "antd";
+import { Button, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import React from "react";
 import { CustomTable } from "./tablestyle";
@@ -11,6 +11,7 @@ import { DownArrow } from "../../components/SiderRight/rightsidersvgs";
 import { setshowsidebar } from "../../Redux/features/showsidebar/showsidebarslice";
 import { useAppDispatch } from "../../Redux/store/hooks";
 import { Filtersvg } from "./tablesvgs";
+import { TableComponent } from "../../components/Table";
 
 const Usertable: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,7 +44,7 @@ const Usertable: React.FC = () => {
 
   console.log(dataa);
 
-  const columns: ColumnsType<DataType> = [
+  const columnsData: ColumnsType<DataType> = [
     {
       title: "Order#",
       dataIndex: "order",
@@ -137,9 +138,7 @@ const Usertable: React.FC = () => {
         <Modal
           isModalOpen={isModalOpen}
           handleOk={() => setIsModalOpen(false)}
-          handleCancel={() => {
-            setIsModalOpen(false);
-          }}
+          handleCancel={() => setIsModalOpen(false)}
           width={350}
         >
           <>
@@ -181,7 +180,7 @@ const Usertable: React.FC = () => {
           </>
         </Modal>
 
-        <Table columns={columns} dataSource={dataa} />
+        <TableComponent columns={columnsData} dataSource={dataa} />
       </div>
     </CustomTable>
   );

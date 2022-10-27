@@ -25,23 +25,7 @@ export const Modal = (props: Props) => {
       footer={null}
       width={width}
     >
-      <div className="contentt">
-        {children}
-        {/* <div className="btn">
-          <Button
-            type="default"
-            onClick={() => {
-              handleCancel();
-            }}
-            className="btn1"
-          >
-            Resume this order
-          </Button>
-          <Button type="primary" className="btn2" onClick={handleCancel}>
-            Close
-          </Button>
-        </div> */}
-      </div>
+      <div className="contentt">{children}</div>
     </CustomModal1>
   );
 };
