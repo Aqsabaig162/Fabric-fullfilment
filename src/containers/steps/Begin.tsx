@@ -5,6 +5,7 @@ import { LayoutTop } from "../../components/LayoutTop";
 import { ProductDetails } from "../../components/ProductDetails";
 import { ThreeSteps } from "../../components/ThreeSteps";
 import { CustomCard, Customsteps } from "./begin.style";
+import { datadetails } from "../../Data/Data";
 
 import {
   Chips,
@@ -15,6 +16,9 @@ import {
   TopThreeDots,
 } from "./beginsvgs";
 import { Modal } from "../../components/Modal";
+import { Completedpic, Completedpicsmall } from "../../Data/svgs";
+import { useParams } from "react-router";
+import { useAppSelector } from "../../Redux/store/hooks";
 
 const { Step } = Steps;
 const steps = [
@@ -39,6 +43,11 @@ export const Begin = (props: Props) => {
   const [isSubModalOpen, setIsSubModalOpen] = useState(false);
   const [current, setCurrent] = useState(0);
   const [Counter, setCounter] = useState(0);
+  let { ordernumber } = useAppSelector((state) => state.ordernumber);
+  let { orderId } = useParams();
+  const selectedId = datadetails?.filter((x) => x.id === ordernumber);
+
+  console.log(selectedId);
 
   const Sum = () => {
     return setCounter(Counter + 1);
@@ -129,8 +138,9 @@ export const Begin = (props: Props) => {
         <div className="Modal4style">
           <p>
             <ProductDetails
+              ProductPic={selectedId?.[0]?.imageSmall as JSX.Element}
               p1={"SKU: 1965322809631234"}
-              p2={"Color: Navy Blue"}
+              p2={` Color:    ${selectedId?.[0]?.color}`}
               p3={" Size: 48 "}
               chips={<Chips />}
               inModal={true}
@@ -190,8 +200,9 @@ export const Begin = (props: Props) => {
                   >
                     <p>
                       <ProductDetails
+                        ProductPic={selectedId?.[0]?.imageSmall as JSX.Element}
                         p1={"SKU: 1965322809631234"}
-                        p2={"Color: Navy Blue"}
+                        p2={` Color:  ${selectedId?.[0]?.color}`}
                         p3={" Size: 48 "}
                         chips={<Chips />}
                       />

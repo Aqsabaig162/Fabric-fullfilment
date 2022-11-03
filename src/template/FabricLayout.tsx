@@ -25,7 +25,7 @@ const onChange = (key: string | string[]) => {
 };
 
 const Layoutfabric = (props: Props) => {
-  const { showsidebar } = useAppSelector((state) => state);
+  const { showsidebar } = useAppSelector((state) => state.showsidebar);
   const { children } = props;
 
   return (

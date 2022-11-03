@@ -2,22 +2,25 @@ import { Button, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import React from "react";
 import { CustomTable } from "./tablestyle";
-import { DataType, Tabledata } from "../../Data";
+import { DataType, Tabledata } from "../../Data/Data";
 import { useState } from "react";
 import { Modal } from "../../components/Modal/index";
 import { LayoutTop } from "../../components/LayoutTop";
 import { GrayBtn } from "../../components/FullWidthButton";
 import { DownArrow } from "../../components/SiderRight/rightsidersvgs";
 import { setshowsidebar } from "../../Redux/features/showsidebar/showsidebarslice";
-import { useAppDispatch } from "../../Redux/store/hooks";
+import { useAppDispatch, useAppSelector } from "../../Redux/store/hooks";
 import { Filtersvg } from "./tablesvgs";
 import { TableComponent } from "../../components/Table";
+import { setordernumber } from "../../Redux/features/tabledata";
+import { datadetails } from "../../Data/Data";
 
 const Usertable: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useAppDispatch();
   const [isSubModalOpen, setIsSubModalOpen] = useState(false);
   const [dataa, setdataa] = useState<any>(Tabledata);
+  const [rowData, setrowData] = useState<any>({});
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -44,12 +47,32 @@ const Usertable: React.FC = () => {
 
   console.log(dataa);
 
+  const Rowdata = () => {
+    alert(rowData);
+  };
+
   const columnsData: ColumnsType<DataType> = [
     {
       title: "Order#",
       dataIndex: "order",
       key: "order",
-      render: (text) => <a className="ordernum">{text}</a>,
+      render: (text, record) => (
+        <>
+          <a
+            className="ordernum"
+            onClick={() => {
+              setrowData(record.order);
+              dispatch(setordernumber(record.order));
+            }}
+          >
+            {text}
+          </a>
+        </>
+      ),
+
+      // onCellClick(record, e) {
+      //   console.log(record.order);
+      // },
     },
     {
       title: "Order size",
@@ -138,7 +161,9 @@ const Usertable: React.FC = () => {
         <Modal
           isModalOpen={isModalOpen}
           handleOk={() => setIsModalOpen(false)}
-          handleCancel={() => setIsModalOpen(false)}
+          handleCancel={() => {
+            handleCancel();
+          }}
           width={350}
         >
           <>

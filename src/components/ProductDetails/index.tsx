@@ -8,18 +8,17 @@ interface Props {
   p3?: string;
   chips?: JSX.Element;
   inModal?: boolean;
+  ProductPic?: JSX.Element;
 }
 
 export const ProductDetails = (props: Props) => {
-  const { p1, p2, p3, chips, inModal } = props;
+  const { p1, p2, p3, chips, inModal, ProductPic } = props;
   return (
     <Productstyle>
       <div className={`stepsproduct ${inModal ? "" : "notModal"}`}>
         <h4>Pull-on Embellished Hem Ankle Jeggings</h4>
         <div className="stepprod1">
-          <div>
-            <img src={smallrectangle} />
-          </div>
+          <div>{ProductPic && ProductPic}</div>
           <div className="prodlist">
             <p> {p1} </p>
             <p> {p2} </p>

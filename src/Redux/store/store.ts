@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import showsidebarReducers from "../features/showsidebar/showsidebarslice";
+import ordernumberReducers from "../features/tabledata";
 
 export const store = configureStore({
-  reducer: showsidebarReducers,
+  reducer: {
+    showsidebar: showsidebarReducers,
+    ordernumber: ordernumberReducers,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
