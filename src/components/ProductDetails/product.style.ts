@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Productstyle = styled.div`
   .stepsproduct {
-    background: #ffffff;
+    background: #f9f9f9;
     border-radius: 16px;
 
     h4 {

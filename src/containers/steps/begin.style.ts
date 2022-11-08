@@ -6,6 +6,18 @@ export const CustomCard = styled(Card)`
   border-radius: 24px;
   border: #f9f9f9;
   width: 595px !important   ;
+  background: white;
+  border: 2px solid #f9f9f9;
+
+  .span {
+    display: flex;
+    height: 420px;
+    justify-content: center;
+    align-items: center;
+    color: #B3B3BD;
+    cursor: pointer;
+}
+  }
 `;
 
 export const Customsteps = styled.div`
@@ -44,13 +56,16 @@ export const Customsteps = styled.div`
   .btn1 {
     width: 48px;
     height: 45px;
-    background: #ffffff;
+    background: #f9f9f9;
     border-radius: 12px;
     border: white;
   }
 
   .card {
     padding-top: 3%;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
   }
 
   display: flex;

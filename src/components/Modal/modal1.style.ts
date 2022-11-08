@@ -33,7 +33,31 @@ export const CustomModal1 = styled(Modal)`
   justify-content: center;
   
 }
+label.ant-radio-wrapper {
+  flex-direction: row-reverse;
+  width: 100%;
+    display: flex;
+   justify-content: space-between; 
+    margin-left: 0px;
 
+
+   > span:last-child{
+      width:80%;
+    }
+   
+}
+
+.parcel {
+  width: 400px;
+}
+
+
+.ant-radio-group{
+  width: 100%;
+}
+.ant-space{
+  width: 100%;
+}
     .unlist {
       list-style: none;
       display: flex;
@@ -83,9 +107,28 @@ export const CustomModal1 = styled(Modal)`
     justify-content: center;
   }
   .contentt {
-    padding-left: 20px;
+    // padding-left: 20px;
     padding-top: 25px;
   }
+  .ant-radio-checked .ant-radio-inner {
+    border-color: #6C5DD3   !important ;
+    background-color: #6C5DD3   !important  ;
+}
+
+.ant-radio-inner::after { 
+  background-color: #ffffff    !important  ;
+
+}
+
+.ant-radio-wrapper-checked{
+  background: #F9F9F9   !important  ;
+  border-radius: 16px       !important   ;
+  padding: 1%;
+}
+
+.ant-radio-wrapper{
+  padding: 1%;
+}
 
   .contentt > p {
     display: flex;

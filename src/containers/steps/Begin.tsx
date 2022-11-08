@@ -1,4 +1,4 @@
-import { Button, message, Steps } from "antd";
+import { Button, message, Radio, RadioChangeEvent, Space, Steps } from "antd";
 import React, { useState } from "react";
 import { GrayBtn } from "../../components/FullWidthButton";
 import { LayoutTop } from "../../components/LayoutTop";
@@ -8,17 +8,20 @@ import { CustomCard, Customsteps } from "./begin.style";
 import { datadetails } from "../../Data/Data";
 
 import {
+  AddSymbol,
   Chips,
   RightTopBtn,
   Separateline,
   Threedots,
   TopLeftBtn,
   TopThreeDots,
+  TwoThird,
 } from "./beginsvgs";
 import { Modal } from "../../components/Modal";
 import { Completedpic, Completedpicsmall } from "../../Data/svgs";
 import { useParams } from "react-router";
 import { useAppSelector } from "../../Redux/store/hooks";
+import { Parcelsize } from "../../components/ParcelSize";
 
 const { Step } = Steps;
 const steps = [
@@ -43,6 +46,9 @@ export const Begin = (props: Props) => {
   const [isSubModalOpen, setIsSubModalOpen] = useState(false);
   const [current, setCurrent] = useState(0);
   const [Counter, setCounter] = useState(0);
+  const [Clicked, setClicked] = useState(false);
+  const [value, setValue] = useState(1);
+  const [packageSize, setpackageSize] = useState(false);
   let { ordernumber } = useAppSelector((state) => state.ordernumber);
   let { orderId } = useParams();
   const selectedId = datadetails?.filter((x) => x.id === ordernumber);
@@ -87,10 +93,14 @@ export const Begin = (props: Props) => {
   const prev = () => {
     setCurrent(current - 1);
   };
+  const onChange = (e: RadioChangeEvent) => {
+    console.log("radio checked", e.target.value);
+    setValue(e.target.value);
+  };
 
   return (
     <>
-      <Modal
+      {/* <Modal
         isModalOpen={isModalOpen}
         handleOk={() => setIsModalOpen(false)}
         handleCancel={() => setIsModalOpen(false)}
@@ -127,8 +137,8 @@ export const Begin = (props: Props) => {
             Done
           </Button>
         </div>
-      </Modal>
-      <Modal
+      </Modal> */}
+      {/* <Modal
         isModalOpen={isSubModalOpen}
         handleOk={() => setIsSubModalOpen(false)}
         handleCancel={() => setIsSubModalOpen(false)}
@@ -166,7 +176,8 @@ export const Begin = (props: Props) => {
             Done
           </Button>
         </div>
-      </Modal>
+      </Modal> */}
+
       <Customsteps>
         <LayoutTop
           title={"PXGAI08942"}
@@ -181,6 +192,7 @@ export const Begin = (props: Props) => {
         <div className="wrapper">
           <div className="stepsdiv">
             <ThreeSteps />
+
             <span className="line">
               <Separateline />
             </span>
@@ -188,14 +200,14 @@ export const Begin = (props: Props) => {
               <CustomCard style={{ width: 300 }}>
                 <div className="align">
                   <h2>Items</h2>
-                  <Button type="primary" className="btn1">
+                  {/* <Button type="primary" className="btn1">
                     <Threedots />
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="products">
                   <span
                     onClick={() => {
-                      showModal();
+                      setClicked(true);
                     }}
                   >
                     <p>
@@ -204,40 +216,116 @@ export const Begin = (props: Props) => {
                         p1={"SKU: 1965322809631234"}
                         p2={` Color:  ${selectedId?.[0]?.color}`}
                         p3={" Size: 48 "}
-                        chips={<Chips />}
+                        chips={Clicked ? <TwoThird /> : <Chips />}
                       />
                     </p>
                   </span>
 
                   <span
                     onClick={() => {
-                      showModal();
+                      setClicked(true);
                     }}
                   >
                     {" "}
                     <p>
                       <ProductDetails
+                        ProductPic={selectedId?.[0]?.imageSmall as JSX.Element}
                         p1={"SKU: 1965322809631234"}
                         p2={"Color: Navy Blue"}
                         p3={" Size: 48 "}
-                        chips={<Chips />}
+                        chips={Clicked ? <TwoThird /> : <Chips />}
                       />
                     </p>
                   </span>
                   <span
                     onClick={() => {
-                      showModal();
+                      setClicked(true);
                     }}
                   >
                     {" "}
                     <p>
                       <ProductDetails
+                        ProductPic={selectedId?.[0]?.imageSmall as JSX.Element}
                         p1={"SKU: 1965322809631234"}
                         p2={"Color: Navy Blue"}
                         p3={" Size: 48 "}
-                        chips={<Chips />}
+                        chips={Clicked ? <TwoThird /> : <Chips />}
                       />
                     </p>
+                  </span>
+                </div>
+              </CustomCard>
+
+              <Modal
+                isModalOpen={isModalOpen}
+                handleOk={() => setIsModalOpen(false)}
+                handleCancel={() => setIsModalOpen(false)}
+                width={450}
+              >
+                <h2>Parcel Size</h2>
+
+                {/* <Parcelsize title={"Bag"} dimension={"12” x 10” x 8” "} />
+                <Parcelsize title={"Bag"} dimension={"12” x 10” x 8” "} />
+                <Parcelsize title={"Bag"} dimension={"12” x 10” x 8” "} /> */}
+
+                <div className="parcel">
+                  <Radio.Group onChange={onChange} value={value}>
+                    <Space direction="vertical">
+                      <Radio value={1}>
+                        <Parcelsize
+                          title={"Bag"}
+                          dimension={"12” x 10” x 8” "}
+                        ></Parcelsize>
+                      </Radio>
+
+                      <Radio value={2}>
+                        <Parcelsize
+                          title={"Box - Small"}
+                          dimension={"8” x 10” x 8”"}
+                        />
+                      </Radio>
+
+                      <Radio value={3}>
+                        <Parcelsize
+                          title={"Box - Large"}
+                          dimension={"8” x 6” x 6”"}
+                        />
+                      </Radio>
+                    </Space>
+                  </Radio.Group>
+
+                  <Button
+                    type="primary"
+                    className="btn2 "
+                    onClick={() => {
+                      handleCancel();
+                      setpackageSize(true);
+                    }}
+                  >
+                    Select
+                  </Button>
+                </div>
+              </Modal>
+
+              <CustomCard style={{ width: 300 }}>
+                <div className="align">
+                  <h2>Parcels</h2>
+                  <Button type="primary" className="btn1">
+                    <AddSymbol />
+                  </Button>
+                </div>
+                <div className="body">
+                  {packageSize ? (
+                    <Parcelsize
+                      title={"Box - Large"}
+                      dimension={"8” x 6” x 6”"}
+                    />
+                  ) : (
+                    ""
+                  )}
+
+                  <span className="span" onClick={() => showModal()}>
+                    Complete pickup to start packing
                   </span>
                 </div>
               </CustomCard>
