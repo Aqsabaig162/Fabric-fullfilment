@@ -5,7 +5,9 @@ import { LayoutTop } from "../../components/LayoutTop";
 import { ProductDetails } from "../../components/ProductDetails";
 import { ThreeSteps } from "../../components/ThreeSteps";
 import { CustomCard, Customsteps } from "./begin.style";
-import { datadetails } from "../../Data/Data";
+import { datadetails, ParcelSize } from "../../Data/Data";
+import { parcels } from "../../Data/Data";
+import { Menu } from "antd";
 
 import {
   AddSymbol,
@@ -49,6 +51,10 @@ export const Begin = (props: Props) => {
   const [Clicked, setClicked] = useState(false);
   const [value, setValue] = useState(1);
   const [packageSize, setpackageSize] = useState(false);
+  const [selectedValue, setselectedValue] = useState(1);
+  const [selectedRadiodata, setselectedRadiodata] = useState<
+    ParcelSize | undefined
+  >();
   let { ordernumber } = useAppSelector((state) => state.ordernumber);
   let { orderId } = useParams();
   const selectedId = datadetails?.filter((x) => x.id === ordernumber);
@@ -95,8 +101,14 @@ export const Begin = (props: Props) => {
   };
   const onChange = (e: RadioChangeEvent) => {
     console.log("radio checked", e.target.value);
-    setValue(e.target.value);
+    setselectedValue(e.target.value);
+
+    const selectedBox = parcels?.filter((x) => x.value === e.target.value);
+    setselectedRadiodata(selectedBox[0]);
   };
+
+  console.log(selectedValue);
+  console.log(selectedRadiodata);
 
   return (
     <>
@@ -269,28 +281,18 @@ export const Begin = (props: Props) => {
                 <Parcelsize title={"Bag"} dimension={"12” x 10” x 8” "} /> */}
 
                 <div className="parcel">
-                  <Radio.Group onChange={onChange} value={value}>
+                  <Radio.Group onChange={onChange} value={selectedValue}>
                     <Space direction="vertical">
-                      <Radio value={1}>
-                        <Parcelsize
-                          title={"Bag"}
-                          dimension={"12” x 10” x 8” "}
-                        ></Parcelsize>
-                      </Radio>
-
-                      <Radio value={2}>
-                        <Parcelsize
-                          title={"Box - Small"}
-                          dimension={"8” x 10” x 8”"}
-                        />
-                      </Radio>
-
-                      <Radio value={3}>
-                        <Parcelsize
-                          title={"Box - Large"}
-                          dimension={"8” x 6” x 6”"}
-                        />
-                      </Radio>
+                      {parcels.map((ParcelData) => {
+                        return (
+                          <Radio value={ParcelData.value}>
+                            <Parcelsize
+                              title={ParcelData.title}
+                              dimension={ParcelData.dimension}
+                            ></Parcelsize>
+                          </Radio>
+                        );
+                      })}
                     </Space>
                   </Radio.Group>
 
@@ -316,10 +318,24 @@ export const Begin = (props: Props) => {
                 </div>
                 <div className="body">
                   {packageSize ? (
-                    <Parcelsize
-                      title={"Box - Large"}
-                      dimension={"8” x 6” x 6”"}
-                    />
+                    <>
+                      <div className="parcelProduct">
+                        <div>
+                          <Button type="primary" className="btnparcelproduct">
+                            <AddSymbol />
+                          </Button>
+                        </div>
+                        <div>
+                          <Parcelsize
+                            title={selectedRadiodata?.title}
+                            dimension={selectedRadiodata?.dimension}
+                          />
+                        </div>
+                        <div>
+                          <Threedots />
+                        </div>
+                      </div>
+                    </>
                   ) : (
                     ""
                   )}

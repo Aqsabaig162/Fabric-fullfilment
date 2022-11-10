@@ -8,6 +8,10 @@ export const CustomThreeSteps = styled.div`
     flex: auto !important ;
   }
 
+  .ant-steps-item:last-child::after {
+    background: red;
+  }
+
   .ant-steps-item-icon::after {
     position: absolute;
     top: 16px;

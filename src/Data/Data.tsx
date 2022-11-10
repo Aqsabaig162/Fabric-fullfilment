@@ -23,6 +23,12 @@ interface DataDetails {
   price: string;
 }
 
+export interface ParcelSize {
+  value: number;
+  title: string;
+  dimension: string;
+}
+
 export const Tabledata: DataType[] = [
   {
     key: 1,
@@ -146,5 +152,23 @@ export const datadetails: DataDetails[] = [
     size: "11’’ x 12’’ x 3’’",
     color: "Voilet ",
     price: "$89.99 ",
+  },
+];
+
+export const parcels: ParcelSize[] = [
+  {
+    value: 1,
+    title: "Bag",
+    dimension: "12” x 10” x 8” ",
+  },
+  {
+    value: 2,
+    title: "Box - Small",
+    dimension: "8” x 10” x 8”",
+  },
+  {
+    value: 3,
+    title: "Box - Large",
+    dimension: "8” x 6” x 6”",
   },
 ];

@@ -3,8 +3,8 @@ import { Radio } from "antd";
 import { ParcelSize } from "./parcelSize.style";
 
 interface Props {
-  title: string;
-  dimension: string;
+  title?: string;
+  dimension?: string;
 }
 
 export const Parcelsize = (props: Props) => {

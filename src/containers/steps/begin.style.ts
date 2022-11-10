@@ -28,6 +28,26 @@ export const Customsteps = styled.div`
     border: 2px solid #ffffff;
     border-radius: 12px;
   }
+  .parcelProduct {
+    display: flex;
+    background: #f9f9f9;
+    border-radius: 16px;
+    align-items: center;
+    padding: 1%;
+    gap: 5px;
+    div:nth-child(3) {
+      margin-left: auto;
+      padding-right: 3%;
+    }
+  }
+
+  .btnparcelproduct {
+    width: 48px;
+    height: 45px;
+    background: white;
+    border-radius: 12px;
+    border: white;
+  }
 
   display: flex;
   flex-direction: column;
@@ -48,7 +68,7 @@ export const Customsteps = styled.div`
   .align {
     display: flex;
     justify-content: space-between;
-
+    padding-bottom: 1%;
     h2 {
       font-weight: 700;
     }

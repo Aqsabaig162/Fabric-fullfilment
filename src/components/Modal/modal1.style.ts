@@ -124,12 +124,17 @@ label.ant-radio-wrapper {
   background: #F9F9F9   !important  ;
   border-radius: 16px       !important   ;
   padding: 1%;
+ 
 }
 
 .ant-radio-wrapper{
   padding: 1%;
+  align-items: center;
 }
+.ant-radio{
+  padding-right: 2%;
 
+}
   .contentt > p {
     display: flex;
     justify-content: center;
