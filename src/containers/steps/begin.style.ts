@@ -88,6 +88,15 @@ export const Customsteps = styled.div`
     gap: 5%;
   }
 
+  hr {
+    height: 1px;
+    color: #eff0f2;
+    background-color: #eff0f2;
+  }
+
+  .stepper {
+    border-bottom: 1px solid #dfe1e6;
+  }
   display: flex;
   justify-content: center;
 `;
