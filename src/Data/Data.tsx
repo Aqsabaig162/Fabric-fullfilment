@@ -1,6 +1,6 @@
 import { Completedpic, Completedpicsmall } from "./svgs";
-import Bigrectangle from "../images/BigRectangle.png";
-import smallrectangle from "../images/smallrectangle.png";
+import Bigrectangle from "../assets/images/BigRectangle.png";
+import smallrectangle from "../assets/images/smallrectangle.png";
 import { StringLiteral } from "typescript";
 
 export interface DataType {
