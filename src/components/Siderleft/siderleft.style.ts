@@ -4,7 +4,6 @@ const { Sider } = Layout;
 
 export const SiderLeft = styled(Sider)`
   background: #ffffff;
-
   .ant-menu-item-selected {
     background: #f9f9f9 !important;
     color: black;

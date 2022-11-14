@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { CustomCard } from "../../containers/steps/begin.style";
 import { Chips, TwoThird } from "../../containers/steps/beginsvgs";
 import { datadetails } from "../../Data/Data";
@@ -8,19 +7,17 @@ import { ProductDetails } from "../ProductDetails";
 type Props = {
   setClickedValue: () => void;
   Clicked: boolean;
+  isShow?: () => void;
 };
 
 export const ProductsCard = (props: Props) => {
-  const { setClickedValue, Clicked } = props;
+  const { setClickedValue, Clicked, isShow } = props;
   let { ordernumber } = useAppSelector((state) => state.ordernumber);
   const selectedId = datadetails?.filter((x) => x.id === ordernumber);
   return (
     <CustomCard style={{ width: 300 }}>
       <div className="align">
         <h2>Items</h2>
-        {/* <Button type="primary" className="btn1">
-                    <Threedots />
-                  </Button> */}
       </div>
       <div className="products">
         <span onClick={() => setClickedValue()}>
@@ -40,7 +37,6 @@ export const ProductsCard = (props: Props) => {
             setClickedValue();
           }}
         >
-          {" "}
           <p>
             <ProductDetails
               ProductPic={selectedId?.[0]?.imageSmall as JSX.Element}
@@ -56,7 +52,6 @@ export const ProductsCard = (props: Props) => {
             setClickedValue();
           }}
         >
-          {" "}
           <p>
             <ProductDetails
               ProductPic={selectedId?.[0]?.imageSmall as JSX.Element}
