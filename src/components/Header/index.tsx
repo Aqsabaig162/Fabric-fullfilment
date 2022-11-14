@@ -16,8 +16,7 @@ const Header = (props: Props) => {
     <CustomHeader>
       <Row>
         <Col span={4}>
-          {" "}
-          <h2 onClick={() => navigate("/")}>{title}</h2>{" "}
+          <h2 onClick={() => navigate("/")}>{title}</h2>
         </Col>
         <Col span={18}>
           <CustomSearch placeholder="" onSearch={onSearch} />

@@ -1,11 +1,10 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import AppRouter from "./router/AppRouter";
 import { store } from "./Redux/store/store";
 import { Provider } from "react-redux";
-
+const AppRouter = lazy(() => import("./router/AppRouter"));
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
@@ -13,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <AppRouter />
+      <Suspense fallback={<h1> Please wait...</h1>}>
+        <AppRouter />
+      </Suspense>
     </Provider>
   </React.StrictMode>,
 );

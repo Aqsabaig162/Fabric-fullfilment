@@ -97,7 +97,4 @@ export const CustomModal1 = styled(Modal)`
     height: 40px;
     width: 100%;
   }
-
-  .manualpickk {
-  }
 `;

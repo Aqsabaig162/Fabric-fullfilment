@@ -19,8 +19,7 @@ export const LayoutTop = (props: Props) => {
         <div className="lefttop">
           <div> {leftbutton} </div>
           <div>
-            {" "}
-            <h1>{title}</h1>{" "}
+            <h1>{title}</h1>
           </div>
         </div>
 

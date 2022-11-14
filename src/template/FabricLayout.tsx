@@ -1,14 +1,8 @@
 import { SideBar2 } from "../components/SiderRight/Sidebar";
 import { CustomLayout, CustomContent } from "./tempstyle";
-import { Button, Collapse } from "antd";
 import Header from "../components/Header";
 import Siderleft from "../components/Siderleft";
-import { useState } from "react";
 import { useAppSelector } from "../Redux/store/hooks";
-import showsidebarslice, {
-  setshowsidebar,
-} from "../Redux/features/showsidebar/showsidebarslice";
-
 interface Props {
   children?:
     | React.ReactNode
@@ -20,9 +14,6 @@ interface Props {
     | string[];
 }
 
-const onChange = (key: string | string[]) => {
-  console.log(key);
-};
 
 const Layoutfabric = (props: Props) => {
   const { showsidebar } = useAppSelector((state) => state.showsidebar);
